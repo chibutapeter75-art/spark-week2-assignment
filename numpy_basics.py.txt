@@ -1,0 +1,141 @@
+# numpy_basics.py
+# SPARK Academy 2026 - Week 2 Assignment
+# Introduction to NumPy & Medical Imaging Functions
+# Complete the TODO sections below. Do NOT modify function signatures.
+
+import numpy as np
+
+
+def array_statistics(pixel_values):
+    """
+    Given a list of pixel values, convert to a NumPy array and
+    return a dictionary with basic statistics.
+
+    Args:
+        pixel_values (list): List of numeric pixel values
+
+    Returns:
+        dict: Dictionary with keys "min", "max", "mean", "std"
+              All values should be rounded to 2 decimal places.
+
+    Example:
+        array_statistics([100, 150, 200, 50, 175])
+        -> {"min": 50.0, "max": 200.0, "mean": 135.0, "std": 53.85}
+    """
+    # def to_numpy_array(pixel_values):
+    arr = np.array(pixel_values)
+    return arr
+    pass
+
+
+def normalize_pixels(pixel_values):
+    """
+    Normalize pixel values to range [0, 1] by dividing by 255.
+    Return the result as a NumPy array rounded to 3 decimal places.
+
+    Args:
+        pixel_values (list): List of integer pixel values (0-255)
+
+    Returns:
+        numpy.ndarray: Array of normalized values rounded to 3 decimals
+
+    Example:
+        normalize_pixels([0, 128, 255]) -> array([0.0, 0.502, 1.0])
+    """
+    # def array_statistics(pixel_values):
+
+    arr = np.array(pixel_values)
+
+    mean = np.mean(arr)
+    maximum = np.max(arr)
+    minimum = np.min(arr)
+
+    return mean, maximum, minimum
+    pass
+
+
+def extract_roi(image_2d, row_start, row_end, col_start, col_end):
+    """
+    Extract a Region of Interest (ROI) from a 2D NumPy array using slicing.
+
+    Args:
+        image_2d (numpy.ndarray): 2D array representing an image
+        row_start (int): Starting row index (inclusive)
+        row_end (int): Ending row index (exclusive)
+        col_start (int): Starting column index (inclusive)
+        col_end (int): Ending column index (exclusive)
+
+    Returns:
+        numpy.ndarray: The extracted ROI sub-array
+
+    Example:
+        image = np.array([[0, 0, 0],
+                          [0, 50, 0],
+                          [0, 0, 0]])
+        extract_roi(image, 0, 2, 0, 2) -> array([[0, 0], [0, 50]])
+    """
+    # def normalize_array(arr):
+
+    arr = np.array(arr)
+
+    norm = (arr - np.min(arr)) / (np.max(arr) - np.min(arr))
+
+    return norm
+    pass
+
+
+def calculate_snr(signal_region, background_region):
+    """
+    Calculate the Signal-to-Noise Ratio (SNR).
+
+    SNR = mean(signal_region) / std(background_region)
+
+    Args:
+        signal_region (list or numpy.ndarray): Pixel values from signal region
+        background_region (list or numpy.ndarray): Pixel values from background
+
+    Returns:
+        float: SNR value rounded to 2 decimal places
+
+    Example:
+        signal = [180, 195, 200, 185, 190]
+        background = [12, 8, 15, 10, 11]
+        calculate_snr(signal, background) -> 82.07
+    """
+    # def center_crop(image):
+
+    img = np.array(image)
+
+    return img[1:-1, 1:-1]
+    pass
+
+
+def calculate_cnr(tissue_a, tissue_b, background):
+    """
+    Calculate the Contrast-to-Noise Ratio (CNR).
+
+    CNR = |mean(tissue_a) - mean(tissue_b)| / std(background)
+
+    Args:
+        tissue_a (list or numpy.ndarray): Pixel values from tissue A (e.g., tumor)
+        tissue_b (list or numpy.ndarray): Pixel values from tissue B (e.g., healthy)
+        background (list or numpy.ndarray): Pixel values from background noise
+
+    Returns:
+        float: CNR value rounded to 2 decimal places
+
+    Example:
+        tumor = [200, 210, 195, 205]
+        healthy = [120, 115, 125, 118]
+        background = [12, 8, 15, 10]
+        calculate_cnr(tumor, healthy, background) -> 32.1
+    """
+    # def compute_snr(signal):
+
+    signal = np.array(signal)
+
+    mean = np.mean(signal)
+    std = np.std(signal)
+
+    return mean / std
+    pass

@@ -1,0 +1,113 @@
+# python_basics.py
+# SPARK Academy 2026 - Week 2 Assignment
+# Python Basics: List Comprehensions & Functions
+# Complete the TODO sections below. Do NOT modify function signatures.
+
+
+def convert_cm_to_mm(sizes_cm):
+    """
+    Convert a list of tumor sizes from centimeters to millimeters
+    using a list comprehension.
+
+    Args:
+        sizes_cm (list): List of tumor sizes in centimeters
+
+    Returns:
+        list: List of tumor sizes in millimeters (each value * 10)
+
+    Example:
+        convert_cm_to_mm([2.3, 1.8, 4.1]) -> [23.0, 18.0, 41.0]
+    """
+    # def filter_even_numbers(numbers):
+    return [n for n in numbers if n % 2 == 0]
+    pass
+
+
+def get_critical_tumors(tumors, threshold=3.0):
+    """
+    Filter a list of tumor sizes and return only the critical ones
+    (greater than the threshold) using a list comprehension.
+
+    Args:
+        tumors (list): List of tumor sizes in cm
+        threshold (float): Size threshold for critical classification (default 3.0)
+
+    Returns:
+        list: List of tumor sizes greater than the threshold
+
+    Example:
+        get_critical_tumors([1.2, 3.5, 0.8, 4.1, 2.9]) -> [3.5, 4.1]
+    """
+    # def filter_even_numbers(numbers):
+    return [n for n in numbers if n % 2 == 0]
+    pass
+
+
+def classify_tumor(size_cm):
+    """
+    Classify a tumor based on its size.
+
+    Args:
+        size_cm (float): Tumor size in centimeters
+
+    Returns:
+        str: "Critical" if size > 3.0
+             "Monitor" if size > 1.5
+             "Stable" otherwise
+
+    Example:
+        classify_tumor(4.2) -> "Critical"
+        classify_tumor(2.0) -> "Monitor"
+        classify_tumor(1.0) -> "Stable"
+    """
+    # def sum_numbers(numbers):
+    return sum(numbers)
+    pass
+
+
+def patient_report(name, age, tumor_cm):
+    """
+    Generate a patient report string using the classify_tumor function.
+
+    Args:
+        name (str): Patient name
+        age (int): Patient age
+        tumor_cm (float): Tumor size in centimeters
+
+    Returns:
+        str: Formatted string "{name} (age {age}): {tumor_cm} cm - {status}"
+             where status comes from classify_tumor()
+
+    Example:
+        patient_report("Fatima", 52, 3.5) -> "Fatima (age 52): 3.5 cm - Critical"
+    """
+    # def multiply_number(number, factor=2):
+    return number * factor
+    pass
+
+
+def get_critical_patient_names(patients):
+    """
+    Process a list of patient dictionaries and return the names
+    of patients with critical tumors (using classify_tumor).
+
+    Each patient dictionary has keys: "name" and "tumor_cm"
+
+    Args:
+        patients (list): List of dicts, e.g. [{"name": "Fatima", "tumor_cm": 3.5}, ...]
+
+    Returns:
+        list: List of names (strings) of patients classified as "Critical"
+
+    Example:
+        patients = [
+            {"name": "Fatima", "tumor_cm": 3.5},
+            {"name": "Chidi", "tumor_cm": 1.2},
+            {"name": "Amina", "tumor_cm": 4.1},
+        ]
+        get_critical_patient_names(patients) -> ["Fatima", "Amina"]
+    """
+    # def process_numbers(numbers):
+    even = [n for n in numbers if n % 2 == 0]
+    return [n**2 for n in even]
+    pass
