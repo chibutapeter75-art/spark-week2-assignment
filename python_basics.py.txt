@@ -18,8 +18,8 @@ def convert_cm_to_mm(sizes_cm):
     Example:
         convert_cm_to_mm([2.3, 1.8, 4.1]) -> [23.0, 18.0, 41.0]
     """
-    # def filter_even_numbers(numbers):
-    return [n for n in numbers if n % 2 == 0]
+    # def convert_cm_to_mm(sizes_cm):
+    return [size * 10 for size in sizes_cm]
     pass
 
 
@@ -38,8 +38,8 @@ def get_critical_tumors(tumors, threshold=3.0):
     Example:
         get_critical_tumors([1.2, 3.5, 0.8, 4.1, 2.9]) -> [3.5, 4.1]
     """
-    # def filter_even_numbers(numbers):
-    return [n for n in numbers if n % 2 == 0]
+    # def get_critical_tumors(tumors, threshold=3.0):
+    return [size for size in tumors if size > threshold]
     pass
 
 
@@ -60,8 +60,13 @@ def classify_tumor(size_cm):
         classify_tumor(2.0) -> "Monitor"
         classify_tumor(1.0) -> "Stable"
     """
-    # def sum_numbers(numbers):
-    return sum(numbers)
+    # def classify_tumor(size_cm):
+    if size_cm > 3.0:
+        return "Critical"
+    elif size_cm > 1.5:
+        return "Monitor"
+    else:
+        return "Stable"
     pass
 
 
@@ -81,8 +86,9 @@ def patient_report(name, age, tumor_cm):
     Example:
         patient_report("Fatima", 52, 3.5) -> "Fatima (age 52): 3.5 cm - Critical"
     """
-    # def multiply_number(number, factor=2):
-    return number * factor
+    # def patient_report(name, age, tumor_cm):
+    status = classify_tumor(tumor_cm)
+    return f"{name} (age {age}): {tumor_cm} cm - {status}"
     pass
 
 
@@ -107,7 +113,6 @@ def get_critical_patient_names(patients):
         ]
         get_critical_patient_names(patients) -> ["Fatima", "Amina"]
     """
-    # def process_numbers(numbers):
-    even = [n for n in numbers if n % 2 == 0]
-    return [n**2 for n in even]
+    # def get_critical_patient_names(patients):
+    return [patient["name"] for patient in patients if classify_tumor(patient["tumor_cm"]) == "Critical"]
     pass
