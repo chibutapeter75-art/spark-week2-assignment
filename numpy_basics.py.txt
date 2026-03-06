@@ -22,9 +22,14 @@ def array_statistics(pixel_values):
         array_statistics([100, 150, 200, 50, 175])
         -> {"min": 50.0, "max": 200.0, "mean": 135.0, "std": 53.85}
     """
-    # def to_numpy_array(pixel_values):
+    # def array_statistics(pixel_values):
     arr = np.array(pixel_values)
-    return arr
+    return {
+        "min": round(np.min(arr), 2),
+        "max": round(np.max(arr), 2),
+        "mean": round(np.mean(arr), 2),
+        "std": round(np.std(arr), 2)
+    }
     pass
 
 
@@ -42,15 +47,9 @@ def normalize_pixels(pixel_values):
     Example:
         normalize_pixels([0, 128, 255]) -> array([0.0, 0.502, 1.0])
     """
-    # def array_statistics(pixel_values):
-
-    arr = np.array(pixel_values)
-
-    mean = np.mean(arr)
-    maximum = np.max(arr)
-    minimum = np.min(arr)
-
-    return mean, maximum, minimum
+    # def normalize_pixels(pixel_values):
+    arr = np.array(pixel_values, dtype=float)
+    return np.round(arr / 255, 3)
     pass
 
 
@@ -74,13 +73,9 @@ def extract_roi(image_2d, row_start, row_end, col_start, col_end):
                           [0, 0, 0]])
         extract_roi(image, 0, 2, 0, 2) -> array([[0, 0], [0, 50]])
     """
-    # def normalize_array(arr):
-
-    arr = np.array(arr)
-
-    norm = (arr - np.min(arr)) / (np.max(arr) - np.min(arr))
-
-    return norm
+    # def extract_roi(image_2d, row_start, row_end, col_start, col_end):
+    arr = np.array(image_2d)
+    return arr[row_start:row_end, col_start:col_end]
     pass
 
 
@@ -102,11 +97,10 @@ def calculate_snr(signal_region, background_region):
         background = [12, 8, 15, 10, 11]
         calculate_snr(signal, background) -> 82.07
     """
-    # def center_crop(image):
-
-    img = np.array(image)
-
-    return img[1:-1, 1:-1]
+    # def calculate_snr(signal_region, background_region):
+    signal = np.array(signal_region)
+    background = np.array(background_region)
+    return round(np.mean(signal) / np.std(background), 2)
     pass
 
 
@@ -130,12 +124,9 @@ def calculate_cnr(tissue_a, tissue_b, background):
         background = [12, 8, 15, 10]
         calculate_cnr(tumor, healthy, background) -> 32.1
     """
-    # def compute_snr(signal):
-
-    signal = np.array(signal)
-
-    mean = np.mean(signal)
-    std = np.std(signal)
-
-    return mean / std
+    # def calculate_cnr(tissue_a, tissue_b, background):
+    tissue_a = np.array(tissue_a)
+    tissue_b = np.array(tissue_b)
+    background = np.array(background)
+    return round(abs(np.mean(tissue_a) - np.mean(tissue_b)) / np.std(background), 2)
     pass
